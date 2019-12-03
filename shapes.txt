@@ -1,0 +1,37 @@
+function printLine(length) {
+    // function definition goes here
+    x = ""
+    for (i = 0; i<length; i++){
+      x+= "*";
+    }
+    console.log(x)
+}
+  printLine (4)
+function printBox(width, height) {
+    // function definition goes here
+}
+
+
+function printCheckerboard(width, height) {
+    // function definition goes here
+}
+
+
+
+function printCross(length) {
+    // function definition goes here
+}
+
+
+
+function printLowerTriangle(length) {
+    // function definition goes here
+}
+
+function printUpperTriangle(length) {
+    // function definition goes here
+}
+
+function printUpsideDownTrapezoid(width, height) {
+    // function definition goes here
+}
