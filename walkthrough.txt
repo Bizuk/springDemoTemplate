@@ -1,0 +1,12 @@
+walkthrough lecture for exercises:
+
+https://github.com/Bizuk/maven.lecturedemo-2020Jan07-exercisewalkthroughs
+
+git commands:
+
+git checkout -b newbranch
+git add .
+git commit -m "new update!"
+git push -u origin newbranch
+git checkout master
+git merge newbranch

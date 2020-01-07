@@ -1,0 +1,22 @@
+SELECT productName AS "Name", productLine AS "Product Line", buyPrice AS "Buy Price"
+FROM products
+ORDER BY buyPrice DESC;
+
+SELECT contactFirstName AS "First Name", contactLastName AS "Last Name", City
+FROM customers WHERE country = "Germany"
+ORDER BY contactLastName ASC;
+
+SELECT DISTINCT status
+FROM orders
+ORDER BY STATUS ASC;
+
+SELECT * FROM payments WHERE paymentDate > " 2005-01-01"
+ORDER BY paymentDate ASC;
+
+SELECT lastName, firstName, email, jobTitle, offices.city
+FROM employees, offices WHERE offices.city = "San Francisco"
+ORDER BY lastName ASC;
+
+SELECT productName "Product Name", productLine "Product Line", productScale "Scale", productVendor "Vendor"
+FROM products WHERE productLine = "Classic Cars" OR productLine ="Vintage Cars"
+ORDER BY productline DESC, productName ASC;
