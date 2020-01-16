@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping(value="/Bizu")
@@ -20,18 +18,40 @@ public class PersonController {
         this.service = service;
     }
 
-    @RequestMapping(value = "/findall", method = RequestMethod.GET)
-    public ResponseEntity<?> findALL(){
+    @RequestMapping(value = "/person")
+    public ResponseEntity<?> findALL() {
         Iterable<PersonModel> allPeople = service.findAll();
-        ResponseEntity<?> response =  new ResponseEntity<>(allPeople, HttpStatus.OK);
+        ResponseEntity<?> response = new ResponseEntity<>(allPeople, HttpStatus.OK);
         return response;
     }
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public ResponseEntity<?> create(@RequestBody PersonModel person){
-       person = service.create(person);
-       ResponseEntity<?> response = new ResponseEntity<>(person,HttpStatus.CREATED);
-               return response;
+    @RequestMapping(value = "/person/{id}", method = RequestMethod.GET)
+    public ResponseEntity<?> findById(@PathVariable Long id) {
+        PersonModel person = service.findyByID(id);
+        ResponseEntity<?> response = new ResponseEntity<>(person, HttpStatus.OK);
+        return response;
+
+    }
+
+    @RequestMapping(value = "/person", method = RequestMethod.POST)
+    public ResponseEntity<?> create(@RequestBody PersonModel person) {
+        person = service.create(person);
+        ResponseEntity<?> response = new ResponseEntity<>(person, HttpStatus.CREATED);
+        return response;
+    }
+
+    @RequestMapping(value = "/person/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<?> delete(@PathVariable Long id) {
+        PersonModel person = service.delete(id);
+        ResponseEntity<?> response = new ResponseEntity<>(person, HttpStatus.OK);
+        return response;
+    }
+
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.PUT)
+    public ResponseEntity update(@PathVariable Long id, @RequestBody PersonModel person) {
+        PersonModel responseBody = service.update(id, person);
+        ResponseEntity responseEntity = new ResponseEntity<>(responseBody, HttpStatus.OK);
+        return responseEntity;
     }
 }
 
